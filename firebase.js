@@ -1,6 +1,6 @@
 // firebase.js
 const firebaseConfig = {
-  apiKey: "AIzaSyAQFT-1tPwh1VuUnSyYuJ-NAxrF7HicnO8",
+  apiKey: "",
   authDomain: "smart-habit-tracker-tritech.firebaseapp.com",
   projectId: "smart-habit-tracker-tritech",
   storageBucket: "smart-habit-tracker-tritech.appspot.com",
@@ -17,3 +17,4 @@ const db = firebase.firestore();
 // Make available globally
 window.auth = auth;
 window.db = db;
+
