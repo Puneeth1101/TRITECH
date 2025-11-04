@@ -1,0 +1,128 @@
+/* dailytracker.css - full styles (same as embedded earlier) */
+
+:root{
+  --bg1: #2b5876;
+  --bg2: #4e4376;
+  --accent: #7b61ff;
+  --card-radius: 14px;
+  --glass: rgba(255,255,255,0.06);
+  --text: #fff;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:"Poppins",system-ui,Segoe UI,Roboto,Arial;
+  color:var(--text);
+  background: linear-gradient(120deg, var(--bg1), var(--bg2), #6a11cb);
+  background-size: 300% 300%;
+  animation: gradientShift 16s ease infinite;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding-bottom:40px;
+}
+@keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+/* header */
+.dt-header{
+  display:flex;justify-content:space-between;align-items:center;padding:18px 26px;gap:12px;
+  backdrop-filter: blur(6px);
+}
+.dt-left{display:flex;align-items:center;gap:16px}
+.go-back{border:none;background:rgba(0,0,0,0.25);color:#fff;padding:10px 14px;border-radius:10px;cursor:pointer}
+.greeting h1{margin:0;font-size:1.25rem}
+.greeting p{margin:4px 0 0;font-size:0.9rem;color:rgba(255,255,255,0.9)}
+
+.icon-btn{border:none;background:rgba(0,0,0,0.18);padding:8px 10px;border-radius:8px;color:#fff;cursor:pointer}
+.badges{display:flex;gap:8px;align-items:center}
+.badge{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#ffd86b,#ff7aa2);color:#111;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,0.18)}
+
+/* layout */
+.dt-main{max-width:1200px;margin:18px auto;padding:0 18px;display:grid;grid-template-columns:1fr 520px;gap:20px}
+.left-col{display:flex;flex-direction:column;gap:16px}
+.right-col{display:flex;flex-direction:column;gap:16px}
+
+/* cards */
+.calendar-card, .chart-card, .insights-card, .reflection-card, .garden-card, .wheel-card, .challenges-card{
+  border-radius:var(--card-radius);
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  padding:18px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+}
+
+/* calendar specifics */
+.calendar-controls{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.nav-btn{background:transparent;border:1px solid rgba(255,255,255,0.12);color:#fff;padding:6px 10px;border-radius:8px;cursor:pointer}
+.month-year-selects select{padding:6px 8px;border-radius:8px;border:none;background:rgba(255,255,255,0.03);color:#fff}
+.week-days{display:grid;grid-template-columns:repeat(7,1fr);margin-top:12px;color:rgba(255,255,255,0.75);font-size:0.85rem}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:12px}
+.calendar-cell{min-height:64px;padding:8px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));color:rgba(255,255,255,0.95);display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease}
+.calendar-cell:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,0.25)}
+.day-number{font-weight:700}
+.cell-completed{border: 1px solid rgba(255,255,255,0.12);box-shadow:0 6px 20px rgba(123,97,255,0.18);background:linear-gradient(135deg,#6ee7f2,#7b61ff);color:#051025}
+
+/* summary row */
+.summary-row{display:flex;gap:12px;justify-content:space-between;margin-top:12px}
+.summary-mini{background:rgba(255,255,255,0.03);padding:10px;border-radius:10px;flex:1;text-align:center}
+
+/* compact chart (reduced height) */
+.chart-card.compact{padding:12px}
+.chart-card.compact canvas{height:170px !important;max-height:220px}
+
+/* insights */
+.motivation-text{font-weight:600;margin-bottom:8px}
+.insights-box{display:flex;gap:14px;flex-direction:column;text-align:left}
+.rewards-row{display:flex;gap:12px;align-items:center;margin-top:12px}
+.btn{background:#fff;color:#111;padding:8px 12px;border-radius:8px;border:none;cursor:pointer}
+.btn.alt{background:transparent;border:1px solid rgba(255,255,255,0.12);color:#fff}
+
+/* reflection */
+.reflection-card textarea{width:100%;min-height:110px;border-radius:8px;padding:10px;border:none;background:rgba(255,255,255,0.03);color:#fff;margin-top:8px;resize:vertical}
+.reflection-actions{display:flex;gap:10px;margin-top:8px}
+
+/* 🌸 Habit Garden Styles */
+.garden-card .garden {
+  display:flex;justify-content:center;gap:36px;padding-top:6px;padding-bottom:6px;
+}
+.flower { position: relative; width:76px; height:110px; transform:scale(0.6); opacity:0.85; transition: transform .6s cubic-bezier(.2,.9,.3,1), opacity .3s; }
+.flower .stem{ position:absolute; bottom:10px; left:50%; transform:translateX(-50%); width:6px; height:60px; background:#2fb86c; border-radius:4px; }
+.flower .petals{ position:absolute; top:0; left:50%; transform:translateX(-50%); width:46px; height:46px; }
+.petal { position:absolute; width:36px; height:36px; border-radius:50%; background: radial-gradient(circle,#ff9a9e,#ff7aa2); transform-origin:50% 80%; opacity:0.98; }
+.petal.a{ transform:translate(-50%,-18px) rotate(0deg) translateY(-4px); }
+.petal.b{ transform:translate(-50%,-18px) rotate(72deg) translateY(-4px); }
+.petal.c{ transform:translate(-50%,-18px) rotate(144deg) translateY(-4px); }
+.petal.d{ transform:translate(-50%,-18px) rotate(216deg) translateY(-4px); }
+.petal.e{ transform:translate(-50%,-18px) rotate(288deg) translateY(-4px); }
+.center { position:absolute; top:6px; left:50%; transform:translateX(-50%); width:28px; height:28px; border-radius:50%; background:linear-gradient(#ffd86b,#ffb347); box-shadow:0 4px 8px rgba(0,0,0,0.14); }
+
+/* Bloomed state */
+.flower.bloomed { transform: scale(1); opacity:1; }
+.flower.bloomed .petal { transform: translate(-50%,-28px) rotate(0deg) translateY(0); transition: transform .6s cubic-bezier(.2,.9,.3,1); }
+.flower.bloomed .petal.b{ transform: translate(-50%,-28px) rotate(72deg) translateY(0); }
+.flower.bloomed .petal.c{ transform: translate(-50%,-28px) rotate(144deg) translateY(0); }
+.flower.bloomed .petal.d{ transform: translate(-50%,-28px) rotate(216deg) translateY(0); }
+.flower.bloomed .petal.e{ transform: translate(-50%,-28px) rotate(288deg) translateY(0); }
+.garden-actions{display:flex;justify-content:center;gap:12px;padding-top:8px}
+
+/* wheel */
+.wheel-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;padding-top:8px}
+.wheel-canvas{width:240px;height:240px;border-radius:50%;box-shadow:0 10px 30px rgba(0,0,0,0.2);background:rgba(255,255,255,0.02);transform-origin:center center;transition:transform 1s ease}
+.spin{background:linear-gradient(90deg,var(--accent),#00c6ff);color:#fff;padding:10px 18px;border-radius:30px;border:none;cursor:pointer;font-weight:700}
+.wheel-result{margin-top:8px;color:#fff;font-weight:700;text-align:center}
+
+/* challenges (simple list) */
+.challenges-list{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.challenge { background: rgba(255,255,255,0.02); padding:10px;border-radius:8px; }
+
+/* small helpers */
+.muted{color:rgba(255,255,255,0.75);font-size:0.9rem}
+.centered-text{display:flex;align-items:center;justify-content:center}
+
+/* modal for past reflections */
+.modal { position:fixed; inset:0; display:none; background: rgba(10,10,10,0.6); align-items:center; justify-content:center; z-index:2000 }
+
+@media (max-width:1000px){
+  .dt-main{grid-template-columns:1fr; padding:8px}
+  .left-col,.right-col{width:100%}
+  .garden{gap:10px}
+}

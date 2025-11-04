@@ -1,0 +1,134 @@
+/* === Base Styles === */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  transition: background 0.5s ease, color 0.5s ease;
+  background: none;
+}
+
+/* Navbar */
+.navbar {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-btns button {
+  margin-left: 10px;
+  padding: 8px 12px;
+  background: #4c4c4d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  color: #2c2b2b;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.cta-btn {
+  background: #8c8e8e;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Features */
+.features {
+  text-align: center;
+  padding: 40px 20px;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.feature-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  padding: 20px;
+  width: 200px;
+  border-radius: 10px;
+  color: #2c2b2b;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* === Background Slideshow Animation === */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  animation: slideshow 18s infinite;
+  opacity: 0.7;
+  transition: opacity 0.5s ease, filter 0.5s ease;
+}
+
+/* Dark mode background tweak */
+.dark-mode::before {
+  filter: brightness(0.5) contrast(1.2);
+  opacity: 0.85;
+}
+
+/* Slideshow Animation */
+@keyframes slideshow {
+  0% {
+    background-image: url("index-bg.jpg");
+  }
+  33% {
+    background-image: url("login-bg.jpg");
+  }
+  66% {
+    background-image: url("dashboard-bg.jpg");
+  }
+  100% {
+    background-image: url("index-bg.jpg");
+  }
+}
+
+/* === Dark Mode === */
+.dark-mode {
+  color: #fff;
+}
+
+.dark-mode .navbar {
+  background: rgba(30, 30, 30, 0.9);
+}
+
+.dark-mode .feature-card {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}

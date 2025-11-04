@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Habit Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>🌞 Smart Habit Dashboard</h1>
+    <div class="top-actions">
+      <button id="dailyTrackerBtn">Daily Tracker</button>
+      <button id="logoutBtn">Logout</button>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <!-- Morning -->
+    <section class="section">
+      <h2>🌅 Morning Routine</h2>
+      <ul id="morningList">
+        <li class="li-row">
+          <div class="left">
+            <input type="checkbox" class="habit-checkbox">
+            <span class="habit-title">Drink Water 💧</span>
+            <small class="habit-time">7:00 AM</small>
+            <input type="time" class="inline-time" value="07:00">
+          </div>
+          <div class="actions">
+            <button class="btn-icon edit">✏️</button>
+            <button class="btn-icon del">🗑️</button>
+          </div>
+        </li>
+        <li class="li-row">
+          <div class="left">
+            <input type="checkbox" class="habit-checkbox">
+            <span class="habit-title">Stretch / Yoga 🧘</span>
+            <small class="habit-time">7:15 AM</small>
+            <input type="time" class="inline-time" value="07:15">
+          </div>
+          <div class="actions">
+            <button class="btn-icon edit">✏️</button>
+            <button class="btn-icon del">🗑️</button>
+          </div>
+        </li>
+        <li class="li-row">
+          <div class="left">
+            <input type="checkbox" class="habit-checkbox">
+            <span class="habit-title">Plan Today 🗓</span>
+            <small class="habit-time">7:30 AM</small>
+            <input type="time" class="inline-time" value="07:30">
+          </div>
+          <div class="actions">
+            <button class="btn-icon edit">✏️</button>
+            <button class="btn-icon del">🗑️</button>
+          </div>
+        </li>
+        <li class="li-row">
+          <div class="left">
+            <input type="checkbox" class="habit-checkbox">
+            <span class="habit-title">Read 10 Pages 📖</span>
+            <small class="habit-time">8:00 AM</small>
+            <input type="time" class="inline-time" value="08:00">
+          </div>
+          <div class="actions">
+            <button class="btn-icon edit">✏️</button>
+            <button class="btn-icon del">🗑️</button>
+          </div>
+        </li>
+      </ul>
+
+      <div class="add-habit">
+        <input type="text" id="morningNewText" placeholder="New habit (morning)">
+        <input type="time" id="morningNewTime">
+        <button class="add-btn" data-period="morning">Add</button>
+      </div>
+    </section>
+
+    <!-- Afternoon -->
+    <section class="section">
+      <h2>🌞 Afternoon Focus</h2>
+      <ul id="afternoonList">
+        <li class="li-row">
+          <div class="left">
+            <input type="checkbox" class="habit-checkbox">
+            <span class="habit-title">Eat Healthy Lunch 🥗</span>
+            <small class="habit-time">1:00 PM</small>
+            <input type="time" class="inline-time" value="13:00">
+          </div>
+          <div class="actions">
+            <button class="btn-icon edit">✏️</button>
+            <button class="btn-icon del">🗑️</button>
+          </div>
+        </li>
+        <li class="li-row">
+          <div class="left">
+            <input type="checkbox" class="habit-checkbox">
+            <span class="habit-title">Short Walk 🚶‍♀</span>
+            <small class="habit-time">2:00 PM</small>
+            <input type="time" class="inline-time" value="14:00">
+          </div>
+          <div class="actions">
+            <button class="btn-icon edit">✏️</button>
+            <button class="btn-icon del">🗑️</button>
+          </div>
+        </li>
+        <li class="li-row">
+          <div class="left">
+            <input type="checkbox" class="habit-checkbox">
+            <span class="habit-title">Drink Water Again 💦</span>
+            <small class="habit-time">3:00 PM</small>
+            <input type="time" class="inline-time" value="15:00">
+          </div>
+          <div class="actions">
+            <button class="btn-icon edit">✏️</button>
+            <button class="btn-icon del">🗑️</button>
+          </div>
+        </li>
+        <li class="li-row">
+          <div class="left">
+            <input type="checkbox" class="habit-checkbox">
+            <span class="habit-title">Avoid Distractions 🚫</span>
+            <small class="habit-time">4:00 PM</small>
+            <input type="time" class="inline-time" value="16:00">
+          </div>
+          <div class="actions">
+            <button class="btn-icon edit">✏️</button>
+            <button class="btn-icon del">🗑️</button>
+          </div>
+        </li>
+      </ul>
+
+      <div class="add-habit">
+        <input type="text" id="afternoonNewText" placeholder="New habit (afternoon)">
+        <input type="time" id="afternoonNewTime">
+        <button class="add-btn" data-period="afternoon">Add</button>
+      </div>
+    </section>
+
+    <!-- Night -->
+    <section class="section">
+      <h2>🌙 Night Wind Down</h2>
+      <ul id="nightList">
+        <li class="li-row">
+          <div class="left">
+            <input type="checkbox" class="habit-checkbox">
+            <span class="habit-title">Reflect on the Day ✨</span>
+            <small class="habit-time">9:00 PM</small>
+            <input type="time" class="inline-time" value="21:00">
+          </div>
+          <div class="actions">
+            <button class="btn-icon edit">✏️</button>
+            <button class="btn-icon del">🗑️</button>
+          </div>
+        </li>
+        <li class="li-row">
+          <div class="left">
+            <input type="checkbox" class="habit-checkbox">
+            <span class="habit-title">Journal / Gratitude 📔</span>
+            <small class="habit-time">9:15 PM</small>
+            <input type="time" class="inline-time" value="21:15">
+          </div>
+          <div class="actions">
+            <button class="btn-icon edit">✏️</button>
+            <button class="btn-icon del">🗑️</button>
+          </div>
+        </li>
+        <li class="li-row">
+          <div class="left">
+            <input type="checkbox" class="habit-checkbox">
+            <span class="habit-title">Prep for Tomorrow 🎒</span>
+            <small class="habit-time">9:30 PM</small>
+            <input type="time" class="inline-time" value="21:30">
+          </div>
+          <div class="actions">
+            <button class="btn-icon edit">✏️</button>
+            <button class="btn-icon del">🗑️</button>
+          </div>
+        </li>
+        <li class="li-row">
+          <div class="left">
+            <input type="checkbox" class="habit-checkbox">
+            <span class="habit-title">Sleep Early 😴</span>
+            <small class="habit-time">10:00 PM</small>
+            <input type="time" class="inline-time" value="22:00">
+          </div>
+          <div class="actions">
+            <button class="btn-icon edit">✏️</button>
+            <button class="btn-icon del">🗑️</button>
+          </div>
+        </li>
+      </ul>
+
+      <div class="add-habit">
+        <input type="text" id="nightNewText" placeholder="New habit (night)">
+        <input type="time" id="nightNewTime">
+        <button class="add-btn" data-period="night">Add</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Daily tracker summary (live) -->
+  <section class="tracker">
+    <h2>📊 Daily Tracker</h2>
+    <div class="progress-wrap">
+      <div class="progress-bg">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+      <p id="progressText">0 / 0 habits completed — 0%</p>
+    </div>
+    <p id="dailyQuote" class="quote">Loading motivation...</p>
+    <div class="tracker-actions">
+      <button id="goDailyTracker">Open Daily Tracker Page</button>
+      <button id="resetToday">Reset Today</button>
+    </div>
+  </section>
+
+  <footer>Made with ❤ — Smart Habit Tracker</footer>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

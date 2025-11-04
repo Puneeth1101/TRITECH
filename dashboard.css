@@ -1,0 +1,142 @@
+/* General Page Styling */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #363688, #7e73a5);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 30px;
+  color: #111010;
+}
+
+/* Dashboard Layout */
+.dashboard {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin: 30px;
+}
+
+/* Habit Section Cards */
+.section {
+  background: linear-gradient(180deg, #c0c0c7, #f4f7ff);
+  border-radius: 12px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 520px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Section Headings */
+.section h2 {
+  font-size: 20px;
+  color: #444;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+/* Habit List */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+li {
+  background: #f7f9fc;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.2s;
+}
+
+li:hover {
+  background: #eef3ff;
+}
+
+li span {
+  font-size: 14px;
+  color: #333;
+}
+
+li small {
+  color: #777;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+/* Action Buttons */
+.actions {
+  display: flex;
+  gap: 5px;
+}
+
+.action-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: color 0.2s;
+}
+
+.action-btn:hover {
+  color: #4a90e2;
+}
+
+/* Add Habit Section */
+.add-habit {
+  margin-top: 15px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.add-habit input,
+.add-habit button {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin: 5px;
+  font-family: inherit;
+}
+
+.add-habit button {
+  background-color: #86a1c0;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-habit button:hover {
+  background-color: #92bde9;
+}
+
+/* Footer */
+footer {
+  margin-top: 25px;
+  color: #333;
+  font-size: 14px;
+}

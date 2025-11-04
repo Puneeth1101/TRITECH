@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Daily Tracker — Smart Habit Tracker</title>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <!-- confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="dailytracker.css" />
+</head>
+<body>
+  <header class="dt-header">
+    <div class="dt-left">
+      <button class="go-back" id="goBackBtn">← Dashboard</button>
+      <div class="greeting">
+        <h1 id="greeting">Good Day, User 👋</h1>
+        <p id="dailyQuote">Stay consistent — small steps win.</p>
+      </div>
+    </div>
+
+    <div class="dt-right">
+      <div class="badges" id="badgesContainer" title="Unlocked badges"></div>
+      <button id="darkModeToggle" class="icon-btn">🌙</button>
+    </div>
+  </header>
+
+  <main class="dt-main">
+    <div class="left-col">
+      <section class="calendar-card">
+        <div class="calendar-controls">
+          <div>
+            <button class="nav-btn" id="prevMonth">‹</button>
+            <span id="monthYear" class="month-year"></span>
+            <button class="nav-btn" id="nextMonth">›</button>
+          </div>
+
+          <div class="month-year-selects">
+            <select id="monthSelect"></select>
+            <select id="yearSelect"></select>
+          </div>
+        </div>
+
+        <div class="week-days">
+          <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+        </div>
+
+        <div id="calendarGrid" class="calendar-grid"></div>
+
+        <div class="summary-row">
+          <div class="summary-mini">
+            <strong id="completedCount">0</strong>
+            <span>days completed (this month)</span>
+          </div>
+          <div class="summary-mini">
+            <strong id="monthPercent">0%</strong>
+            <span>completion rate</span>
+          </div>
+          <div class="summary-mini">
+            <strong id="longestStreak">0</strong>
+            <span>longest streak</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="chart-card compact">
+        <div class="chart-header">
+          <h3>Monthly completion trend</h3>
+          <div class="view-toggle">
+            <button id="view7" class="small-btn active">7 days</button>
+            <button id="view30" class="small-btn">30 days</button>
+          </div>
+        </div>
+        <canvas id="trendChart"></canvas>
+      </section>
+
+      <section class="insights-card">
+        <h3>Motivation & Insights</h3>
+        <p id="motivationText" class="motivation-text"></p>
+        <div id="insightsBox" class="insights-box">
+          <p><strong>Consistency:</strong> <span id="consistencyRate">0%</span></p>
+          <p><strong>Current streak:</strong> <span id="currentStreak">0</span> days</p>
+          <p><strong>Top habit:</strong> <span id="topHabit">—</span></p>
+        </div>
+        <div class="rewards-row">
+          <button id="claimReward" class="btn">Claim Reward</button>
+          <div id="rewardMsg" class="reward-msg"></div>
+        </div>
+      </section>
+
+      <section class="reflection-card">
+        <h3>Reflection Corner</h3>
+        <div class="muted">Daily notes are saved per date and can be viewed later.</div>
+        <div style="margin-top:10px;">
+          <label id="reflectionDateLabel" style="font-weight:600"></label>
+          <textarea id="reflectionText" placeholder="Write your reflection for today..."></textarea>
+          <div class="reflection-actions">
+            <button id="saveReflection" class="btn">Save Note</button>
+            <button id="clearReflection" class="btn alt">Clear</button>
+            <button id="viewPastReflections" class="btn alt">View Past</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="right-col">
+      <section class="garden-card">
+        <h3>🌸 Habit Garden</h3>
+        <div class="muted">Flowers bloom when you complete a day — or press "Bloom Now".</div>
+        <div id="garden" class="garden" aria-hidden="false">
+          <!-- 3 flowers -->
+          <div class="flower" data-idx="0">
+            <div class="stem"></div>
+            <div class="petals">
+              <div class="petal a"></div>
+              <div class="petal b"></div>
+              <div class="petal c"></div>
+              <div class="petal d"></div>
+              <div class="petal e"></div>
+              <div class="center"></div>
+            </div>
+          </div>
+          <div class="flower" data-idx="1">
+            <div class="stem"></div>
+            <div class="petals">
+              <div class="petal a"></div>
+              <div class="petal b"></div>
+              <div class="petal c"></div>
+              <div class="petal d"></div>
+              <div class="petal e"></div>
+              <div class="center"></div>
+            </div>
+          </div>
+          <div class="flower" data-idx="2">
+            <div class="stem"></div>
+            <div class="petals">
+              <div class="petal a"></div>
+              <div class="petal b"></div>
+              <div class="petal c"></div>
+              <div class="petal d"></div>
+              <div class="petal e"></div>
+              <div class="center"></div>
+            </div>
+          </div>
+        </div>
+        <div class="garden-actions">
+          <button id="bloomNow" class="btn">Bloom Now</button>
+          <button id="resetGarden" class="btn alt">Reset Garden</button>
+        </div>
+      </section>
+
+      <section class="challenges-card">
+        <h3>⚡ Weekly Challenges</h3>
+        <div class="challenges-list" id="challengesList">
+          <!-- JS populates -->
+        </div>
+      </section>
+
+      <section class="wheel-card">
+        <h3>🎯 Lucky Spin</h3>
+        <div class="muted">Spin to get a small daily challenge.</div>
+        <div class="wheel-wrap">
+          <canvas id="wheelCanvas" class="wheel-canvas" width="240" height="240"></canvas>
+          <button id="spinWheel" class="spin">Spin</button>
+          <div id="wheelResult" class="wheel-result"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Past reflections modal -->
+  <div id="pastReflectionsModal" class="modal" style="display:none;align-items:center;justify-content:center;">
+    <div style="background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.02));padding:18px;border-radius:12px;max-width:820px;width:92%;max-height:80vh;overflow:auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3>Past Reflections</h3>
+        <button id="closeModal" class="btn alt">Close</button>
+      </div>
+      <div id="pastNotesList" style="margin-top:12px;display:flex;flex-direction:column;gap:12px"></div>
+    </div>
+  </div>
+
+  <script src="dailytracker.js"></script>
+</body>
+</html>
